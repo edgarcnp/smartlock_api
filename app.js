@@ -17,6 +17,7 @@ app.use(logger)
 app.use('/api/users/', users)
 app.use('/api/auth/', auth)
 app.use('/api/bookings/', booking)
+const db = require('./models/index');
 
 app.get('/', (req, res) => {
   res.send('API online')

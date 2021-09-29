@@ -21,6 +21,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      node_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       }
     });
   },

@@ -12,18 +12,17 @@ const client = new Client({
 
 client
     .connect()
-    .then(() => {
-        client
-            .query(`CREATE DATABASE ${config.database}`)
-            .then(() => {
-                console.log('db created');
-                client.end()
-                spawn("npx", ["sequelize-cli","db:migrate"], { stdio: 'inherit' , shell: true});
-            }
-            )
-            .catch((err) => {
-                console.log('Error Occured: '+err);
-                client.end();
-            })
-    })
     .catch((err) => (console.log('Error Occured: '+err)))
+
+client
+    .query(`CREATE DATABASE ${config.database}`)
+    .then(() => {
+        console.log('db created');
+        client.end()
+        spawn("npx", ["sequelize-cli","db:migrate"], { stdio: 'inherit' , shell: true});
+    }
+    )
+    .catch((err) => {
+        console.log('Error Occured: '+err);
+        client.end();
+    })

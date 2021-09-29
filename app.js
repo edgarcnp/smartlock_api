@@ -9,6 +9,7 @@ const booking = require('./routes/booking')
 
 const logger = require('./middleware/logger')
 
+
 app.use(express.static('./static'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
@@ -17,9 +18,9 @@ app.use(logger)
 app.use('/api/users/', users)
 app.use('/api/auth/', auth)
 app.use('/api/bookings/', booking)
-const db = require('./models/index');
 
-app.get('/', (req, res) => {
+
+app.get('/', async (req, res) => {
   res.send('API online')
 })
 
